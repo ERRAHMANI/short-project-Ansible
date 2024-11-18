@@ -1,0 +1,19 @@
+--- 
+
+- name: Create folder
+  file:
+    path: "{{ path_folder }}/youness"
+    state: directory
+    mode: '0755'
+  
+- name: Create empty file
+  file:
+    path: "{{ path_folder }}/youness/testfile.txt"
+    state: touch
+    mode: "0644"
+
+  
+- name: Copy content to the file
+  copy:
+    content: "Youness is deploying on dev :)"
+    dest: "{{ path_folder }}/youness/testfile.txt"
