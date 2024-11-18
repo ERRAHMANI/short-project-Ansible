@@ -2,7 +2,7 @@
 
 - name: deploy playbook
   hosts: test
-  become: true
+
 
   tasks:
     - name: deploy setup
