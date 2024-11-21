@@ -3,8 +3,17 @@
 - name: deploy playbook
   hosts: test
 
+- name: installer Apache
+  hosts: test
+
+  
 
   tasks:
     - name: deploy setup
       import_tasks: roles/setup/tasks/main.yml
+      remote_user: jonas
+
+  
+    - name: install apache
+      import_tasks: roles/setup/tasks/apache.yml
       remote_user: jonas

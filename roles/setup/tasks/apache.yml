@@ -1,0 +1,19 @@
+---
+
+- name: Installer Apache
+  apt:
+    name: apache2
+    state: present
+
+- name: Activer et démarrer Apache
+  systemd:
+    name: apache2
+    enabled: yes
+    state: started
+
+- name: Ouvrir le port 80 dans le pare-feu (UFW)
+  ufw:
+    rule: allow
+    port: 80
+    proto: tcp
+  when: ansible_os_family == "Debian"
