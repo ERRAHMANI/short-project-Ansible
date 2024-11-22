@@ -2,18 +2,12 @@
 
 - name: deploy playbook
   hosts: test
-
-- name: installer Apache
-  hosts: test
-
-  
+  become: true  # Active les privilèges sudo pour toutes les tâches de ce playbook
+  remote_user: jonas  # Spécifie l'utilisateur à distance utilisé pour exécuter les tâches
 
   tasks:
     - name: deploy setup
       import_tasks: roles/setup/tasks/main.yml
-      remote_user: jonas
 
-  
     - name: install apache
       import_tasks: roles/setup/tasks/apache.yml
-      remote_user: jonas
